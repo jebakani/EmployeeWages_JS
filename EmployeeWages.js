@@ -17,17 +17,21 @@ const PART_TIME_HRS=4;
 const FULL_TIME_HRS=8;
 const WAGE_PER_HR=20;
 let empHrs=0;
-empCheck=Math.floor(Math.random()*10)%3;
-switch(empCheck)
+//UC3-Refactor:Returning working hours using function
+function getWorkHrs()
 {
-    case IS_PART_TIMER:
-        empHrs=PART_TIME_HRS;
-        break;
-    case IS_FULL_TIMER:
-        empHrs=FULL_TIME_HRS;
-        break;
-    default:
-        break;
+    empCheck = Math.floor(Math.random() * 10) % 3;
+    switch (empCheck) {
+        case IS_PART_TIMER:
+            empHrs = PART_TIME_HRS;
+            break;
+        case IS_FULL_TIMER:
+            empHrs = FULL_TIME_HRS;
+            break;
+        default:
+            break;
+    }
+   return empHrs;
 }
-let dailyWage=empHrs*WAGE_PER_HR;
-console.log("UC2-Daily wages of the employee:"+dailyWage);
+let dailyWage=getWorkHrs()*WAGE_PER_HR;
+console.log("UC3-Daily wages of the employee:"+dailyWage);
