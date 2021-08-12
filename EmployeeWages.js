@@ -18,9 +18,9 @@ const FULL_TIME_HRS=8;
 const WAGE_PER_HR=20;
 let empHrs=0;
 //UC3-Refactor:Returning working hours using function
-function getWorkHrs()
+function getWorkHrs(empCheck)
 {
-    empCheck = Math.floor(Math.random() * 10) % 3;
+    empHrs=0;
     switch (empCheck) {
         case IS_PART_TIMER:
             empHrs = PART_TIME_HRS;
@@ -33,5 +33,18 @@ function getWorkHrs()
     }
    return empHrs;
 }
-let dailyWage=getWorkHrs()*WAGE_PER_HR;
+empCheck = Math.floor(Math.random() * 10) % 3;
+let dailyWage=getWorkHrs(empCheck)*WAGE_PER_HR;
 console.log("UC3-Daily wages of the employee:"+dailyWage);
+
+//UC4-Calculating monthly wages of employee for 20 days
+const TOTAl_WORKING_DAYS=20;
+let monthlyWage=0;
+empHrs=0;
+for(i=1;i<=TOTAl_WORKING_DAYS;i++)
+{
+    empCheck = Math.floor(Math.random() * 10) % 3;
+    empHrs+=getWorkHrs(empCheck)
+}
+monthlyWage=empHrs*WAGE_PER_HR;
+console.log("UC4-Calculating total Wages of the employee:"+monthlyWage);
