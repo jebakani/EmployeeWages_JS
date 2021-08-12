@@ -44,7 +44,18 @@ empHrs=0;
 for(i=1;i<=TOTAl_WORKING_DAYS;i++)
 {
     empCheck = Math.floor(Math.random() * 10) % 3;
-    empHrs+=getWorkHrs(empCheck)
+    empHrs+=getWorkHrs(empCheck);
 }
 monthlyWage=empHrs*WAGE_PER_HR;
 console.log("UC4-Calculating total Wages of the employee:"+monthlyWage);
+const MAX_WORKING_HRS=160;
+let totalWorkingHrs=0;
+let totalWorkingDays=0;
+while(totalWorkingDays<=TOTAl_WORKING_DAYS || totalWorkingHrs<=MAX_WORKING_HRS)
+{
+    totalWorkingDays++;
+    empCheck = Math.floor(Math.random() * 10) % 3;
+    totalWorkingHrs+=getWorkHrs(empCheck);
+}
+let totalWages= totalWorkingHrs*WAGE_PER_HR;
+console.log("UC5- Total wages:"+totalWages+"for "+totalWorkingDays+" days and "+totalWorkingHrs+" hrs");  
