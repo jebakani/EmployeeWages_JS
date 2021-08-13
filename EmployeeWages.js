@@ -48,6 +48,7 @@ for(i=1;i<=TOTAl_WORKING_DAYS;i++)
 }
 monthlyWage=empHrs*WAGE_PER_HR;
 console.log("UC4-Calculating total Wages of the employee:"+monthlyWage);
+
 const MAX_WORKING_HRS=160;
 let totalWorkingHrs=0;
 let totalWorkingDays=0;
