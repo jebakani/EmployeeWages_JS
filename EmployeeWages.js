@@ -51,11 +51,23 @@ console.log("UC4-Calculating total Wages of the employee:"+monthlyWage);
 const MAX_WORKING_HRS=160;
 let totalWorkingHrs=0;
 let totalWorkingDays=0;
-while(totalWorkingDays<=TOTAl_WORKING_DAYS || totalWorkingHrs<=MAX_WORKING_HRS)
+//creating the array to store daily wages
+let dailyEmployeeWage= new Array();
+while(totalWorkingDays<=TOTAl_WORKING_DAYS && totalWorkingHrs<=MAX_WORKING_HRS)
 {
-    totalWorkingDays++;
+    totalWorkingDays+=1;
     empCheck = Math.floor(Math.random() * 10) % 3;
-    totalWorkingHrs+=getWorkHrs(empCheck);
+    let empHrs=getWorkHrs(empCheck);
+    totalWorkingHrs+=empHrs;
+    //push the element in the stack order
+    dailyEmployeeWage.push(CalculateEmployeeWages(empHrs));
 }
-let totalWages= totalWorkingHrs*WAGE_PER_HR;
-console.log("UC5- Total wages:"+totalWages+"for "+totalWorkingDays+" days and "+totalWorkingHrs+" hrs");  
+let totalWages= CalculateEmployeeWages(totalWorkingHrs);
+console.log("UC5- Total wages:"+totalWages+" for "+totalWorkingDays+" days and "+totalWorkingHrs+" hrs");  
+
+//UC6-storing daily wages in array
+//function to calculate wages
+function CalculateEmployeeWages(empHrs)
+{
+    return empHrs*WAGE_PER_HR;
+}
