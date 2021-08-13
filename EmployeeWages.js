@@ -89,7 +89,6 @@ function TotalWagesCalculate(totalWages,dailyWage)
     return totalWages+dailyWage;
 }
 console.log("UC7 A-Employe wages wit reduce:"+dailyEmployeeWage.reduce(TotalWagesCalculate,0));
-
 //UC7-B Display day along with wages using map function
 let dailyCounter=0;
 function MapDayWithWages(dailyWage)
