@@ -71,4 +71,22 @@ console.log("UC5- Total wages:"+totalWages+" for "+totalWorkingDays+" days and "
 function CalculateEmployeeWages(empHrs)
 {
     return empHrs*WAGE_PER_HR;
+
 }
+
+totalWages=0;
+//UC7-A Calculate total employee wages using for each
+function CalculateTotal(empWages)
+{
+     totalWages+=empWages;
+}
+
+dailyEmployeeWage.forEach(CalculateTotal);
+console.log("UC7A- Total wages:"+totalWages+" for "+totalWorkingDays+" days and "+totalWorkingHrs+" hrs"); 
+//Using reduce function
+function TotalWagesCalculate(totalWages,dailyWage)
+{
+    return totalWages+dailyWage;
+}
+console.log("UC7 A-Employe wages wit reduce:"+dailyEmployeeWage.reduce(TotalWagesCalculate,0));
+
