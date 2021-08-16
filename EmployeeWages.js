@@ -54,12 +54,16 @@ let totalWorkingHrs=0;
 let totalWorkingDays=0;
 //creating the array to store daily wages
 let dailyEmployeeWageArray= new Array();
+//create the map to store the value
+let EmployeeWageMap=new Map();
 while(totalWorkingDays<=TOTAl_WORKING_DAYS && totalWorkingHrs<=MAX_WORKING_HRS)
 {
     totalWorkingDays+=1;
     empCheck = Math.floor(Math.random() * 10) % 3;
     let empHrs=getWorkHrs(empCheck);
     totalWorkingHrs+=empHrs;
+    //set the value in tha map
+    EmployeeWageMap.set(totalWorkingDays,CalculateEmployeeWages(empHrs));
     //push the element in the stack order
     dailyEmployeeWageArray.push(CalculateEmployeeWages(empHrs));
 }
@@ -136,3 +140,7 @@ function NoOfDaysWorked(totalNumberOfDays,dailyWage)
 }
 //UC7-G total number of days worked
 console.log("UC7-G:total number of days worked : "+dailyEmployeeWageArray.reduce(NoOfDaysWorked,0));
+
+//UC8-Storing the days and wages using dictionary
+console.log("employe wage at each day:\n",EmployeeWageMap);
+console.log("UC8-Total wages:"+Array.from(EmployeeWageMap.values()).reduce(TotalWagesCalculate,0));
