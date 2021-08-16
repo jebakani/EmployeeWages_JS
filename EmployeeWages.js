@@ -89,7 +89,7 @@ function TotalWagesCalculate(totalWages,dailyWage)
     return totalWages+dailyWage;
 }
 console.log("UC7 A-Employe wages wit reduce:"+dailyEmployeeWageArray.reduce(TotalWagesCalculate,0));
-console.log("UC7 A-Employe wages wit reduce:"+dailyEmployeeWage.reduce(TotalWagesCalculate,0));
+
 //UC7-B Display day along with wages using map function
 let dailyCounter=0;
 function MapDayWithWages(dailyWage)
@@ -108,3 +108,8 @@ function FullTimeEmpWage(dailyWage)
 let fullTimeWageArray=mapDayWithWagesArray.filter(FullTimeEmpWage);
 console.log("UC7-C Daily wages for full time elmployee :");
 console.log(fullTimeWageArray);
+
+//UC7-D Find first occurance of full time wage
+let firstOccurrence=mapDayWithWagesArray.find(FullTimeEmpWage);
+console.log("UC7-D First Occurrence full time elmployee : ");
+console.log('Day :'+firstOccurrence);
