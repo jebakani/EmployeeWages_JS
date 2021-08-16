@@ -113,3 +113,6 @@ console.log(fullTimeWageArray);
 let firstOccurrence=mapDayWithWagesArray.find(FullTimeEmpWage);
 console.log("UC7-D First Occurrence full time elmployee : ");
 console.log('Day :'+firstOccurrence);
+
+//UC7-E Check if every employee is full time 
+console.log("UC7-D:Employee is full time every day :"+fullTimeWageArray.every(FullTimeEmpWage));
