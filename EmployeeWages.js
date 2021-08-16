@@ -125,3 +125,14 @@ function PartTimeEmployeeWages(dailyWage)
 }
 //UC7-F Check any part time employee  is available
 console.log("UC7-F:Is part time employee available:"+mapDayWithWagesArray.some(PartTimeEmployeeWages));
+//function to ca
+function NoOfDaysWorked(totalNumberOfDays,dailyWage)
+{
+     if(dailyWage>0)
+     {
+          return totalNumberOfDays+1;
+     }
+      return totalNumberOfDays;
+}
+//UC7-G total number of days worked
+console.log("UC7-G:total number of days worked : "+dailyEmployeeWageArray.reduce(NoOfDaysWorked,0));
