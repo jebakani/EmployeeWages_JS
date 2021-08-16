@@ -53,7 +53,7 @@ const MAX_WORKING_HRS=160;
 let totalWorkingHrs=0;
 let totalWorkingDays=0;
 //creating the array to store daily wages
-let dailyEmployeeWage= new Array();
+let dailyEmployeeWageArray= new Array();
 while(totalWorkingDays<=TOTAl_WORKING_DAYS && totalWorkingHrs<=MAX_WORKING_HRS)
 {
     totalWorkingDays+=1;
@@ -61,7 +61,7 @@ while(totalWorkingDays<=TOTAl_WORKING_DAYS && totalWorkingHrs<=MAX_WORKING_HRS)
     let empHrs=getWorkHrs(empCheck);
     totalWorkingHrs+=empHrs;
     //push the element in the stack order
-    dailyEmployeeWage.push(CalculateEmployeeWages(empHrs));
+    dailyEmployeeWageArray.push(CalculateEmployeeWages(empHrs));
 }
 let totalWages= CalculateEmployeeWages(totalWorkingHrs);
 console.log("UC5- Total wages:"+totalWages+" for "+totalWorkingDays+" days and "+totalWorkingHrs+" hrs");  
@@ -71,7 +71,6 @@ console.log("UC5- Total wages:"+totalWages+" for "+totalWorkingDays+" days and "
 function CalculateEmployeeWages(empHrs)
 {
     return empHrs*WAGE_PER_HR;
-
 }
 
 totalWages=0;
@@ -81,25 +80,31 @@ function CalculateTotal(empWages)
      totalWages+=empWages;
 }
 
-dailyEmployeeWage.forEach(CalculateTotal);
+dailyEmployeeWageArray.forEach(CalculateTotal);
 console.log("UC7A- Total wages:"+totalWages+" for "+totalWorkingDays+" days and "+totalWorkingHrs+" hrs"); 
+
 //Using reduce function
 function TotalWagesCalculate(totalWages,dailyWage)
 {
     return totalWages+dailyWage;
 }
-console.log("UC7 A-Employe wages wit reduce:"+dailyEmployeeWage.reduce(TotalWagesCalculate,0));
+console.log("UC7 A-Employe wages wit reduce:"+dailyEmployeeWageArray.reduce(TotalWagesCalculate,0));
 
-<<<<<<< HEAD
-=======
 //UC7-B Display day along with wages using map function
 let dailyCounter=0;
 function MapDayWithWages(dailyWage)
 {
     dailyCounter+=1;
-    return "Day "+dailyCounter+" = "+dailyWage;
+    return dailyCounter+" = "+dailyWage;
 }
-let mapDayWithWagesArray=dailyEmployeeWage.map(MapDayWithWages);
+let mapDayWithWagesArray=dailyEmployeeWageArray.map(MapDayWithWages);
 console.log("UC7 B-Daily wages with day :");
 console.log(mapDayWithWagesArray);
->>>>>>> origin/UC7-ArrayHelperFunctions
+//UC7-C Filter thefull time elmployee
+function FullTimeEmpWage(dailyWage)
+{
+    return (dailyWage.includes('160'));
+}
+let fullTimeWageArray=mapDayWithWagesArray.filter(FullTimeEmpWage);
+console.log("UC7-C Daily wages for full time elmployee :");
+console.log(fullTimeWageArray);
