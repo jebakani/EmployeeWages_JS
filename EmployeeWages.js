@@ -105,6 +105,7 @@ function FullTimeEmpWage(dailyWage)
 {
     return (dailyWage.includes('160'));
 }
+
 let fullTimeWageArray=mapDayWithWagesArray.filter(FullTimeEmpWage);
 console.log("UC7-C Daily wages for full time elmployee :");
 console.log(fullTimeWageArray);
@@ -116,3 +117,11 @@ console.log('Day :'+firstOccurrence);
 
 //UC7-E Check if every employee is full time 
 console.log("UC7-D:Employee is full time every day :"+fullTimeWageArray.every(FullTimeEmpWage));
+
+//UC7-F Checking the partime employee
+function PartTimeEmployeeWages(dailyWage)
+{
+    return (dailyWage.includes('80'));
+}
+//UC7-F Check any part time employee  is available
+console.log("UC7-F:Is part time employee available:"+mapDayWithWagesArray.some(PartTimeEmployeeWages));
