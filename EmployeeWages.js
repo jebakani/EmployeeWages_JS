@@ -204,11 +204,18 @@ class EmployeeDetail {
     id;
     salary;
     name;
+    //Extend gender and start date
+    gender;
+    startDate;
+
     //Constructor
-    constructor(id,name,salary) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
+    //passing as parameter
+    constructor(...params) {
+        this.id = params[0];
+        this.name = params[1];
+        this.salary = params[2];
+        this.gender=params[3];
+        this.startDate=params[4];
     }
  //getter setter
     get name() {
@@ -219,9 +226,11 @@ class EmployeeDetail {
     }
     toString()
     {
-        return 'id :'+this.id+'\t name:'+this.name+'\t salary :'+this.salary;
+        return 'id :'+this.id+'\t name:'+this.name+'\t salary :'+this.salary+"\t gender:"+this.gender+"\t startDate:"+this.startDate;
     }
 }
 let employeePayRoll=new EmployeeDetail(1,"mark",3000);
+console.log(employeePayRoll.toString());
+employeePayRoll=new EmployeeDetail(2,"john",50000,'Male',new Date(2012,07,28));
 console.log(employeePayRoll.toString());
 }
