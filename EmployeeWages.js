@@ -52,6 +52,7 @@ let totalWorkingDays = 0;
 let dailyEmployeeWageArray = new Array();
 //create the map to store the value
 let EmployeeWageMap = new Map();
+let EmployeeHrMap=new Map();
 while (totalWorkingDays <= TOTAl_WORKING_DAYS && totalWorkingHrs <= MAX_WORKING_HRS) {
     totalWorkingDays += 1;
     empCheck = Math.floor(Math.random() * 10) % 3;
@@ -59,6 +60,7 @@ while (totalWorkingDays <= TOTAl_WORKING_DAYS && totalWorkingHrs <= MAX_WORKING_
     totalWorkingHrs += empHrs;
     //set the value in tha map
     EmployeeWageMap.set(totalWorkingDays, CalculateEmployeeWages(empHrs));
+    EmployeeHrMap.set(totalWorkingDays,empHrs);
     //push the element in the stack order
     dailyEmployeeWageArray.push(CalculateEmployeeWages(empHrs));
 }
@@ -131,3 +133,11 @@ console.log("UC7-G:total number of days worked : " + dailyEmployeeWageArray.redu
 //UC8-Storing the days and wages using dictionary
 console.log("employe wage at each day:\n", EmployeeWageMap);
 console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(TotalWagesCalculate, 0));
+
+//UC9-Arrow function
+const findTotal= (totalValue,dailyWage)=>{
+    return totalValue+dailyWage;
+}
+let totalHours=Array.from(EmployeeHrMap.values()).reduce(findTotal,0);
+let totalSalary=dailyEmployeeWageArray.filter(dailyWage=>dailyWage>0).reduce(findTotal,0);
+console.log("UC9-Total working hours:" +totalHours+ " And total salary : "+totalSalary);
