@@ -199,38 +199,52 @@ console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(Tot
     console.log("UC11-D -Days of leave:",noWorkingdayArr.join(","));
 }
 {
-class EmployeeDetail {
-    //properties  
-    id;
-    salary;
-    name;
-    //Extend gender and start date
-    gender;
-    startDate;
+    class EmployeeDetail {
+        //properties  
+        id;
+        salary;
+        //Extend gender and start date
+        gender;
+        startDate;
+        
 
-    //Constructor
-    //passing as parameter
-    constructor(...params) {
-        this.id = params[0];
-        this.name = params[1];
-        this.salary = params[2];
-        this.gender=params[3];
-        this.startDate=params[4];
+        //Constructor
+        //passing as parameter
+        constructor(...params) {
+            this.id = params[0];
+            this.name = params[1];
+            this.salary = params[2];
+            this.gender = params[3];
+            this.startDate = params[4];
+        }
+        //getter setter
+        get name() {
+            return this._name;
+        }
+        set name(empName) {
+            //check whether the name matches the pattern
+            let pattern = RegExp("^[A-Z]{1}[a-z]{3,}$")
+            if (pattern.test(empName)) {
+                this._name = empName;
+            }
+            else {
+                throw 'Name is incorrect';
+            }
+
+        }
+        toString() {
+            return 'id :' + this.id + '\t name:' + this.name + '\t salary :' + this.salary + "\t gender:" + this.gender + "\t startDate:" + this.startDate;
+        }
     }
- //getter setter
-    get name() {
-        return this.name;
+    let employeePayRoll = new EmployeeDetail(1, "Mark", 3000);
+    console.log(employeePayRoll.toString());
+    employeePayRoll = new EmployeeDetail(2, "John", 50000, 'Male', new Date(2012, 07, 28));
+    console.log(employeePayRoll.toString());
+    try {
+        employeePayRoll.name = "Jhonny";
+        console.log(employeePayRoll.toString());
     }
-    set name(_name) {
-        this.name = _name;
+    catch (e) {
+        console.error(e);
     }
-    toString()
-    {
-        return 'id :'+this.id+'\t name:'+this.name+'\t salary :'+this.salary+"\t gender:"+this.gender+"\t startDate:"+this.startDate;
-    }
-}
-let employeePayRoll=new EmployeeDetail(1,"mark",3000);
-console.log(employeePayRoll.toString());
-employeePayRoll=new EmployeeDetail(2,"john",50000,'Male',new Date(2012,07,28));
-console.log(employeePayRoll.toString());
 }
