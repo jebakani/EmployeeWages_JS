@@ -198,3 +198,30 @@ console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(Tot
     let noWorkingdayArr= empDayHrsAndArr.filter(pEmployeeArr=>pEmployeeArr.dailyHours==0).map(pEmployeeArr=>pEmployeeArr.dayNum);
     console.log("UC11-D -Days of leave:",noWorkingdayArr.join(","));
 }
+{
+class EmployeeDetail {
+    //properties  
+    id;
+    salary;
+    name;
+    //Constructor
+    constructor(id,name,salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+ //getter setter
+    get name() {
+        return this.name;
+    }
+    set name(_name) {
+        this.name = _name;
+    }
+    toString()
+    {
+        return 'id :'+this.id+'\t name:'+this.name+'\t salary :'+this.salary;
+    }
+}
+let employeePayRoll=new EmployeeDetail(1,"mark",3000);
+console.log(employeePayRoll.toString());
+}
