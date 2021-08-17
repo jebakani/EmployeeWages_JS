@@ -187,6 +187,11 @@ console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(Tot
     console.log("UC11-A- Total salary: " + totalWage);
     console.log("UC11-A- Total hours worked:" + totalWorkingHours);
 
+     console.log("\nUC11-B-Full time employee");
     //UC11-B Displaying the full time working days using foreach
     empDayHrsAndArr.filter(dailyHrWage => dailyHrWage.dailyHours == 8).forEach(dailyHrs => process.stdout.write(dailyHrs.toString()));
+
+    //UC11-C Displaying the part time employee using map 
+    let partTimeEmployeeArr= empDayHrsAndArr.filter(pEmployeeArr=>pEmployeeArr.dailyHours==4).map(pEmployeeArr=>pEmployeeArr.toString());
+    console.log("\n\nUC11-C : Part time employee array:"+partTimeEmployeeArr);
 }
