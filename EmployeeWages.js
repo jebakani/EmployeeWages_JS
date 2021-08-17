@@ -161,25 +161,24 @@ console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(Tot
 }
 //UC10-Storing Days Hrs and Wages in object
 {
- let totalDays=0;
- let totalHrs=0;
- let empDayHrsAndArr =new Array();
- while(totalHrs < MAX_WORKING_HRS && totalDays< TOTAl_WORKING_DAYS)
- {
-     totalDays++;
-     let empCheck = Math.floor(Math.random() * 10) % 3;
-     let empHrs = getWorkHrs(empCheck);
-     totalHrs += empHrs;
-     empDayHrsAndArr.push({
-         dayNum:totalDays,
-         dailyHours:empHrs,
-         dailyWage:CalculateEmployeeWages(empHrs),
-         toString(){
-             return '\nDay:'+this.dayNum+" => working hrs:"+this.dailyHours+" => Wages: "+this.dailyWage
-         },
-     });
- }
- console.log("UC10- Displaying the data stored in the object:"+empDayHrsAndArr);
+    let totalDays = 0;
+    let totalHrs = 0;
+    let empDayHrsAndArr = new Array();
+    while (totalHrs < MAX_WORKING_HRS && totalDays < TOTAl_WORKING_DAYS) {
+        totalDays++;
+        let empCheck = Math.floor(Math.random() * 10) % 3;
+        let empHrs = getWorkHrs(empCheck);
+        totalHrs += empHrs;
+        empDayHrsAndArr.push({
+            dayNum: totalDays,
+            dailyHours: empHrs,
+            dailyWage: CalculateEmployeeWages(empHrs),
+            toString() {
+                return '\nDay:' + this.dayNum + " => working hrs:" + this.dailyHours + " => Wages: " + this.dailyWage
+            },
+        });
+    }
+    console.log("UC10- Displaying the data stored in the object:" + empDayHrsAndArr);
 
     //UC11 - a 
     let totalWage = empDayHrsAndArr.filter(dailyHrWage => dailyHrWage.dailyWage > 0).reduce((totalWages, dailyHrWage) => totalWages += dailyHrWage.dailyWage, 0);
@@ -187,26 +186,19 @@ console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(Tot
     console.log("UC11-A- Total salary: " + totalWage);
     console.log("UC11-A- Total hours worked:" + totalWorkingHours);
 
-     console.log("\nUC11-B-Full time employee");
+    console.log("\nUC11-B-Full time employee");
     //UC11-B Displaying the full time working days using foreach
     empDayHrsAndArr.filter(dailyHrWage => dailyHrWage.dailyHours == 8).forEach(dailyHrs => process.stdout.write(dailyHrs.toString()));
 
     //UC11-C Displaying the part time employee using map 
-    let partTimeEmployeeArr= empDayHrsAndArr.filter(pEmployeeArr=>pEmployeeArr.dailyHours==4).map(pEmployeeArr=>pEmployeeArr.toString());
-    console.log("\n\nUC11-C : Part time employee array:"+partTimeEmployeeArr);
+    let partTimeEmployeeArr = empDayHrsAndArr.filter(pEmployeeArr => pEmployeeArr.dailyHours == 4).map(pEmployeeArr => pEmployeeArr.toString());
+    console.log("\n\nUC11-C : Part time employee array:" + partTimeEmployeeArr);
     //UC11-D - No Working days
-    let noWorkingdayArr= empDayHrsAndArr.filter(pEmployeeArr=>pEmployeeArr.dailyHours==0).map(pEmployeeArr=>pEmployeeArr.dayNum);
-    console.log("UC11-D -Days of leave:",noWorkingdayArr.join(","));
+    let noWorkingdayArr = empDayHrsAndArr.filter(pEmployeeArr => pEmployeeArr.dailyHours == 0).map(pEmployeeArr => pEmployeeArr.dayNum);
+    console.log("UC11-D -Days of leave:", noWorkingdayArr.join(","));
 }
 {
     class EmployeeDetail {
-        //properties  
-        id;
-        salary;
-        //Extend gender and start date
-        gender;
-        startDate;
-        
 
         //Constructor
         //passing as parameter
@@ -221,26 +213,84 @@ console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(Tot
         get name() {
             return this._name;
         }
-        set name(empName) {
+        set name(name) {
             //check whether the name matches the pattern
             let pattern = RegExp("^[A-Z]{1}[a-z]{3,}$")
-            if (pattern.test(empName)) {
-                this._name = empName;
+            if (pattern.test(name)) {
+                this._name = name;
             }
             else {
                 throw 'Name is incorrect';
             }
 
         }
+        get id() {
+            return this._id;
+        }
+        set id(empId) {
+            //check whether the name matches the pattern
+            let pattern = RegExp("^[1-9]{1}[0-9]*$")
+            if (pattern.test(empId)) {
+                this._id = empId;
+            }
+            else {
+                throw 'Id should be positive';
+            }
+
+        }
+
+        get salary() {
+            return this._salary;
+        }
+        set salary(pay) {
+            //check whether the name matches the pattern
+            let pattern = RegExp("^[1-9]{1}[0-9]*$")
+            if (pattern.test(pay)) {
+                this._salary = pay;
+            }
+            else {
+                throw 'Pay should be positive';
+            }
+
+        }
+        get gender() {
+            return this._gender;
+        }
+        set gender(gender) {
+            //check whether the name matches the pattern
+            let pattern = RegExp("^[M,F]$")
+            if (pattern.test(gender)) {
+                this._gender = gender;
+            }
+            else {
+                throw 'gender should be either M or F';
+            }
+
+        }
+
+        get startDate() {
+            return this._startDate;
+        }
+        set startDate(date) {
+            let predate = Date.now();
+            if (date.getTime() < predate) {
+                this._startDate = date;
+            }
+            else {
+                throw 'No future date accepted';
+            }
+        }
+
         toString() {
             return 'id :' + this.id + '\t name:' + this.name + '\t salary :' + this.salary + "\t gender:" + this.gender + "\t startDate:" + this.startDate;
         }
     }
-    let employeePayRoll = new EmployeeDetail(1, "Mark", 3000);
-    console.log(employeePayRoll.toString());
-    employeePayRoll = new EmployeeDetail(2, "John", 50000, 'Male', new Date(2012, 07, 28));
-    console.log(employeePayRoll.toString());
+    console.log("UC14- validate every properties of employee:")
     try {
+        let employeePayRoll = new EmployeeDetail(1, "Markie", 3000, 'F', new Date(2020, 10, 30));
+        console.log("UC12:Getting employee detail:\n"+employeePayRoll.toString());
+        employeePayRoll = new EmployeeDetail(2, "John", 50000, 'M', new Date(2012, 07, 28));
+        console.log("UC13- validate the name of the employee:\n"+employeePayRoll.toString());
         employeePayRoll.name = "Jhonny";
         console.log(employeePayRoll.toString());
     }
