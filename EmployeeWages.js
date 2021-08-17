@@ -180,4 +180,10 @@ console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(Tot
      });
  }
  console.log("UC10- Displaying the data stored in the object:"+empDayHrsAndArr);
+
+ //UC11 - a 
+ let totalWage=empDayHrsAndArr.filter(dailyWages=>empDayHrsAndArr.dailyWage>0).reduce((totalWages,dailyWages)=>totalWages+=dailyWages,0);
+ let totalHours=empDayHrsAndArr.filter(dailyHrs=>empDayHrsAndArr.dailyHours>0).reduce((totalHrs,dailyHrs)=>totalHrs+=dailyHrs,0);
+ console.log("UC11-A- Total salary: "+totalWages);
+ console.log("UC11-A- Total hours worked:"+totalHours);
 }
