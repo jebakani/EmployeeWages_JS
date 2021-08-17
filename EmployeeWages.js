@@ -194,4 +194,7 @@ console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(Tot
     //UC11-C Displaying the part time employee using map 
     let partTimeEmployeeArr= empDayHrsAndArr.filter(pEmployeeArr=>pEmployeeArr.dailyHours==4).map(pEmployeeArr=>pEmployeeArr.toString());
     console.log("\n\nUC11-C : Part time employee array:"+partTimeEmployeeArr);
+    //UC11-D - No Working days
+    let noWorkingdayArr= empDayHrsAndArr.filter(pEmployeeArr=>pEmployeeArr.dailyHours==0).map(pEmployeeArr=>pEmployeeArr.dayNum);
+    console.log("UC11-D -Days of leave:",noWorkingdayArr.join(","));
 }
