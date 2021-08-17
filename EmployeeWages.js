@@ -159,3 +159,25 @@ console.log("UC8-Total wages:" + Array.from(EmployeeWageMap.values()).reduce(Tot
     console.log("Parttime work days:" + partTimeWorkArray.join("\t"));
     console.log("leave days        :" + leaveArray.join("\t"));
 }
+//UC10-Storing Days Hrs and Wages in object
+{
+ let totalDays=0;
+ let totalHrs=0;
+ let empDayHrsAndArr =new Array();
+ while(totalHrs < MAX_WORKING_HRS && totalDays< TOTAl_WORKING_DAYS)
+ {
+     totalDays++;
+     let empCheck = Math.floor(Math.random() * 10) % 3;
+     let empHrs = getWorkHrs(empCheck);
+     totalHrs += empHrs;
+     empDayHrsAndArr.push({
+         dayNum:totalDays,
+         dailyHours:empHrs,
+         dailyWage:CalculateEmployeeWages(empHrs),
+         toString(){
+             return '\nDay:'+this.dayNum+" => working hrs:"+this.dailyHours+" => Wages: "+this.dailyWage
+         },
+     });
+ }
+ console.log("UC10- Displaying the data stored in the object:"+empDayHrsAndArr);
+}
